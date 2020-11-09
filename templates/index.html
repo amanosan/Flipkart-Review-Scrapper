@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+<!-- Head Block -->
+{% block head %}
+<title>Flipkart Review Search</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+{% endblock %}
+
+<!-- Body Block -->
+{% block body %}
+<section class="main">
+	<h1>Flipkart Review Scrapper</h1>
+	<h3>Search for a Product</h3>
+	<div class="form-container">
+		<form action="" id="search-form" method="POST">
+			<input
+				type="text"
+				name="searchString"
+				id="searchString"
+				label="Type the name of the Product"
+			/>
+		</form>
+		<button type="submit" form="search-form" value="Search">Search</button>
+	</div>
+</section>
+<footer>
+	<div class="footer_container">
+		<p>Made By: Aman Osan</p>
+	</div>
+</footer>
+{% endblock %}

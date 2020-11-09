@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+<!-- Head Block -->
+{% block head %}
+<title>Result Page</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+{% endblock %}
+
+<!-- Body Block -->
+{% block body %}
+<section class="main">
+	<div class="results">
+		<table class="review-table">
+			<tr>
+				<th>Customer Name</th>
+				<th>Rating</th>
+				<th>Review Heading</th>
+				<th>Review Message</th>
+			</tr>
+			{% for review in reviews %}
+			<tr>
+				<td>{{ review['Name'] }}</td>
+				<td>{{ review['Rating'] }}</td>
+				<td>{{ review['Review Heading'] }}</td>
+				<td>{{ review['Review'] }}</td>
+			</tr>
+			{% endfor %}
+		</table>
+	</div>
+</section>
+{% endblock %}
