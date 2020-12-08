@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, jsonify
+from flask.json import dump
 import requests
 from bs4 import BeautifulSoup as bs
 
@@ -20,7 +21,7 @@ def index():
 
             # finding all the products:
             products = flipkart_html.findAll(
-                'div', {'class': 'bhgxx2 col-12-12'})
+                'div', {'class': '_2pi5LC col-12-12'})
             # limiting our products:
             products = products[4:10]
 
@@ -40,14 +41,14 @@ def index():
                 if (product_page.status_code == 200):
                     product_html = bs(product_page.text, "html.parser")
                     review_boxes = product_html.findAll(
-                        'div', {'class': '_3nrCtb'})
+                        'div', {'class': '_16PBlm'})
 
                     # adding reviews in dictionary
                     for review_box in review_boxes:
                         # Name
                         try:
                             customer_name = review_box.find_all(
-                                'p', {'class': '_3LYOAd _3sxSiS'})[0].text
+                                'p', {'class': '_2sc7ZR _2V5EHH'})[0].text
                         except:
                             customer_name = "No Name"
                         # Rating:
@@ -63,7 +64,7 @@ def index():
                         # Review Message
                         try:
                             comment_tag = review_box.div.div.find_all(
-                                'div', {'class': 'qwjRop'})
+                                'div', {'class': 't-ZTKy'})
                             review_message = comment_tag[0].div.div.text
                         except:
                             review_message = "No Review"
@@ -75,8 +76,9 @@ def index():
 
                         # appending reviews in review list:
                         reviews.append(reviewDict)
-                        # print(reviews)
+                        print(reviews)
                     return render_template('results.html', reviews=reviews)
+
         else:
             return "Something Went Wrong"
     else:
